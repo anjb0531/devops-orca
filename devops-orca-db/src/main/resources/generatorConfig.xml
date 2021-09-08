@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN" "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+<generatorConfiguration>
+    <!-- TODO: set local maven repository location before running -->
+    <classPathEntry location="C:\Users\mobigen\.m2\repository\org\postgresql\postgresql\42.2.6\postgresql-42.2.6.jar"/>
+    <context id="context1" targetRuntime="MyBatis3">
+        <commentGenerator>
+            <property name="suppressAllComments" value="true" />
+        </commentGenerator>
+
+
+        <jdbcConnection connectionURL="jdbc:postgresql://58.181.37.137:9182/ipbh"
+                        driverClass="org.postgresql.Driver" password="123!@#" userId="tsdn" />
+
+
+        <javaModelGenerator targetPackage="com.mobigen.ipbh.db.model"
+                            targetProject="src/main/java" />
+        <sqlMapGenerator targetPackage="com.mobigen.ipbh.db.mapper"
+                         targetProject="src/main/resources/" />
+        <javaClientGenerator targetPackage="com.mobigen.ipbh.db.mapper"
+                             targetProject="src/main/java" type="XMLMAPPER" />
+
+        <!--table schema="public" tableName="cm_batch_work" />
+        <table schema="public" tableName="cm_batch_work_sim" />
+        <table schema="public" tableName="cm_batch_work_exec" />
+        <table schema="public" tableName="cm_batch_work_device" />
+        <table schema="public" tableName="cm_batch_work_postcheck" />
+        <table schema="public" tableName="cm_batch_work_check" /-->
+        <table schema="public" tableName="cm_batch_work_device" />
+<!--        <table schema="public" tableName="cm_batch_work_input_orca" />-->
+<!--        <table schema="public" tableName="vw_huawei_track_if" />-->
+<!--        <table schema="public" tableName="oc_interface" />-->
+<!--        <table schema="public" tableName="oc_if_neighbor" />-->
+<!--        <table schema="public" tableName="oc_if_ip" />-->
+<!--        <table schema="public" tableName="oc_if_vrrp" />-->
+    </context>
+</generatorConfiguration>

@@ -1,0 +1,22 @@
+spring:
+  profiles:
+    include: LOG_CONSOLE, LOG_FILE
+  datasource:
+    hikari:
+      driverClassName: org.postgresql.Driver
+      jdbc-url: jdbc:postgresql://58.181.37.137:9182/ipbh?ApplicationName=DEVOPS-ORCA
+      username: tsdn
+      password: 123!@#
+      maximum-pool-size: 10
+      pool-name: IPBH-DEVOPS-ORCA-DB-POOL
+  flyway:
+    enabled: false
+
+file:
+  root-path: /opt/ip_infra/scheduler/
+  python-executor: /usr/bin/python
+
+logging:
+  appender: FILE
+  path: /home/sdn_hola/apps/devops-orca/logs
+  file: ${logging.path}/${service.name:${spring.application.name}}

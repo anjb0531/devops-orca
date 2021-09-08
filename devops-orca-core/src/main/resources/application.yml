@@ -1,0 +1,51 @@
+server:
+  port: 7784
+
+service:
+  name: devops-orca
+
+server.tomcat:
+  internal-proxies: .*
+  protocol-header: X-Forwarded-Proto
+  port-header: X-Forwarded-Port
+  remote-ip-header: X-Forwarded-For
+  max-threads: 500
+  min-spare-threads: 50
+
+spring:
+  profiles:
+    active: dev
+  application:
+    name: devops-orca
+  flyway:
+    enabled: false
+
+#feign 관련 주입 에러 해결 위함
+#spring.main.allow-bean-definition-overriding: true
+
+rest:
+  client:
+    default:
+      max-total-connections: 100
+      max-connections-per-route: 100
+      connect-timeout-millis: 9000
+      connection-request-timeout-millis: 9000
+      socket-timeout-millis: 9000
+    proxy:
+      host-name: localhost
+      port: 80
+
+restTemplate:
+  factory:
+    readTimeout: 300000
+    connectTimeout: 3000
+  httpClient:
+    maxConnTotal: 100
+    maxConnPerRoute: 5
+
+management:
+  server:
+    port: 7785
+  endpoints:
+    web:
+      base-path: /

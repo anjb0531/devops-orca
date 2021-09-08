@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mobigen.ipbh.db.mapper.CmBatchWorkInputOrcaMapper">
+  <resultMap id="BaseResultMap" type="com.mobigen.ipbh.db.model.CmBatchWorkInputOrca">
+    <result column="work_id" jdbcType="VARCHAR" property="workId" />
+    <result column="sequence" jdbcType="INTEGER" property="sequence" />
+    <result column="hostnames" jdbcType="VARCHAR" property="hostnames" />
+    <result column="work_body" jdbcType="VARCHAR" property="workBody" />
+    <result column="result_code" jdbcType="VARCHAR" property="resultCode" />
+    <result column="result_message" jdbcType="VARCHAR" property="resultMessage" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    work_id, sequence, hostnames, work_body, result_code, result_message
+  </sql>
+  <select id="selectByExample" parameterType="com.mobigen.ipbh.db.model.CmBatchWorkInputOrcaExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from public.cm_batch_work_input_orca
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <delete id="deleteByExample" parameterType="com.mobigen.ipbh.db.model.CmBatchWorkInputOrcaExample">
+    delete from public.cm_batch_work_input_orca
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.mobigen.ipbh.db.model.CmBatchWorkInputOrca">
+    insert into public.cm_batch_work_input_orca (work_id, sequence, hostnames, 
+      work_body, result_code, result_message
+      )
+    values (#{workId,jdbcType=VARCHAR}, #{sequence,jdbcType=INTEGER}, #{hostnames,jdbcType=VARCHAR}, 
+      #{workBody,jdbcType=VARCHAR}, #{resultCode,jdbcType=VARCHAR}, #{resultMessage,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.mobigen.ipbh.db.model.CmBatchWorkInputOrca">
+    insert into public.cm_batch_work_input_orca
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="workId != null">
+        work_id,
+      </if>
+      <if test="sequence != null">
+        sequence,
+      </if>
+      <if test="hostnames != null">
+        hostnames,
+      </if>
+      <if test="workBody != null">
+        work_body,
+      </if>
+      <if test="resultCode != null">
+        result_code,
+      </if>
+      <if test="resultMessage != null">
+        result_message,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="workId != null">
+        #{workId,jdbcType=VARCHAR},
+      </if>
+      <if test="sequence != null">
+        #{sequence,jdbcType=INTEGER},
+      </if>
+      <if test="hostnames != null">
+        #{hostnames,jdbcType=VARCHAR},
+      </if>
+      <if test="workBody != null">
+        #{workBody,jdbcType=VARCHAR},
+      </if>
+      <if test="resultCode != null">
+        #{resultCode,jdbcType=VARCHAR},
+      </if>
+      <if test="resultMessage != null">
+        #{resultMessage,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.mobigen.ipbh.db.model.CmBatchWorkInputOrcaExample" resultType="java.lang.Long">
+    select count(*) from public.cm_batch_work_input_orca
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update public.cm_batch_work_input_orca
+    <set>
+      <if test="record.workId != null">
+        work_id = #{record.workId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.sequence != null">
+        sequence = #{record.sequence,jdbcType=INTEGER},
+      </if>
+      <if test="record.hostnames != null">
+        hostnames = #{record.hostnames,jdbcType=VARCHAR},
+      </if>
+      <if test="record.workBody != null">
+        work_body = #{record.workBody,jdbcType=VARCHAR},
+      </if>
+      <if test="record.resultCode != null">
+        result_code = #{record.resultCode,jdbcType=VARCHAR},
+      </if>
+      <if test="record.resultMessage != null">
+        result_message = #{record.resultMessage,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update public.cm_batch_work_input_orca
+    set work_id = #{record.workId,jdbcType=VARCHAR},
+      sequence = #{record.sequence,jdbcType=INTEGER},
+      hostnames = #{record.hostnames,jdbcType=VARCHAR},
+      work_body = #{record.workBody,jdbcType=VARCHAR},
+      result_code = #{record.resultCode,jdbcType=VARCHAR},
+      result_message = #{record.resultMessage,jdbcType=VARCHAR}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+</mapper>
